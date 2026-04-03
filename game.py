@@ -401,3 +401,41 @@ class Rogue(Character, Serializable):
         damage = self.attack_power * 1.2
         target.defend(damage)
 
+# ============================================================
+# Step 7: load_characters Function (CSV to Character Objects)
+# ============================================================
+
+def load_characters(filepath):
+    """
+    Loads character data from a CSV file and returns a list of objects.
+
+    Parameters:
+        filepath (str): The path to the CSV file.
+
+    Returns:
+        list: A list of character objects.
+    """
+    characters = []
+
+    with open(filepath, "r") as file:
+        reader = csv.DictReader(file)
+        # each row in the CSV corresponds to a character's attributes
+        for row in reader:
+            name = row["name"]
+            character_type = row["character_type"]
+            level = int(row["level"])
+            health = float(row["health"])
+            attack_power = float(row["attack_power"])
+            defense = float(row["defense"])
+
+            # create the right subclass from character_type
+            if character_type == "Warrior":
+                character = Warrior(name, level, health, attack_power, defense)
+            elif character_type == "Mage":
+                character = Mage(name, level, health, attack_power, defense)
+            elif character_type == "Rogue":
+                character = Rogue(name, level, health, attack_power, defense)
+
+            characters.append(character)
+
+    return characters
