@@ -281,5 +281,123 @@ class Rogue(Character, Serializable):
         Returns:
             None
         """
-        
+
         super().__init__(name, level, health, attack_power, defense)
+
+
+# ============================================================
+# Step 6: Subclass Overrides (Unique Combat Behavior)
+# ============================================================
+
+class Warrior(Character, Serializable):
+    """
+    Represents a Warrior character.
+    """
+
+    def __init__(self, name, level, health, attack_power, defense):
+        """
+        Initializes a Warrior object.
+
+        Parameters:
+            name (str)
+            level (int)
+            health (float)
+            attack_power (float)
+            defense (float)
+
+        Returns:
+            None
+        """
+        super().__init__(name, level, health, attack_power, defense)
+
+    def defend(self, damage):
+        """
+        Reduces incoming damage with stronger defense.
+
+        Parameters:
+            damage (float)
+
+        Returns:
+            None
+        """
+        # warriors block more damage than the base Character
+        damage_taken = damage - (self.defense * 1.5)
+
+        if damage_taken < 0:
+            damage_taken = 0
+
+        self.health -= damage_taken
+
+
+class Mage(Character, Serializable):
+    """
+    Represents a Mage character.
+    """
+
+    def __init__(self, name, level, health, attack_power, defense):
+        """
+        Initializes a Mage object.
+
+        Parameters:
+            name (str)
+            level (int)
+            health (float)
+            attack_power (float)
+            defense (float)
+
+        Returns:
+            None
+        """
+        super().__init__(name, level, health, attack_power, defense)
+
+    def attack(self, target):
+        """
+        Attacks with stronger magic damage.
+
+        Parameters:
+            target (Character)
+
+        Returns:
+            None
+        """
+        # mages hit harder than the base Character
+        damage = self.attack_power * 1.5
+        target.defend(damage)
+
+
+class Rogue(Character, Serializable):
+    """
+    Represents a Rogue character.
+    """
+
+    def __init__(self, name, level, health, attack_power, defense):
+        """
+        Initializes a Rogue object.
+
+        Parameters:
+            name (str)
+            level (int)
+            health (float)
+            attack_power (float)
+            defense (float)
+
+        Returns:
+            None
+        """
+        super().__init__(name, level, health, attack_power, defense)
+
+    def attack(self, target):
+        """
+        Attacks with a quicker strike.
+
+        Parameters:
+            target (Character)
+
+        Returns:
+            None
+        """
+        # rogues get a smaller attack boost
+        damage = self.attack_power * 1.2
+        target.defend(damage)
+
+        
