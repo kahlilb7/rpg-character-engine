@@ -1,3 +1,8 @@
+# Kahlil Batieste
+# 03/29/2026
+# Project 2: RPG Character Engine
+# Builds a character system using classes, inheritance, and file loading
+
 # ============================================================
 # game.py — Project 2: RPG Character Engine
 # DO NOT modify the run_battle() function below.
@@ -55,3 +60,80 @@ def run_battle(fighter1, fighter2):
 # ============================================================
 # Write your classes and functions below this line.
 # ============================================================
+
+# ============================================================
+# Step 1: Character Class Structure
+# ============================================================
+
+class Character:
+    """
+    Represents a basic game character with shared stats and behavior.
+
+    Parameters:
+        name (str): The character's name.
+        level (int): The character's level.
+        health (float): The character's current health.
+        attack_power (float): The character's attack strength.
+        defense (float): The character's defense stat.
+
+    Returns:
+        None
+    """
+
+    def __init__(self, name, level, health, attack_power, defense):
+        """
+        Initializes a Character object with basic attributes.
+
+        Parameters:
+            name (str): The character's name.
+            level (int): The character's level.
+            health (float): The character's current health.
+            attack_power (float): The character's attack strength.
+            defense (float): The character's defense stat.
+
+        Returns:
+            None
+        """
+        self.name = name
+        self.level = level
+        self.health = health
+        self.attack_power = attack_power
+        self.defense = defense
+
+
+  # ============================================================
+    # Step 2: Character Methods
+    # ============================================================
+
+    def attack(self, target):
+        """
+        Attacks another character by dealing damage.
+        """
+        damage = self.attack_power
+        target.defend(damage)
+
+
+    def defend(self, damage):
+        """
+        Reduces health based on incoming damage and defense.
+        """
+        damage_taken = damage - self.defense
+
+        if damage_taken < 0:
+            damage_taken = 0
+
+        self.health -= damage_taken
+
+
+    def is_alive(self):
+        """
+        Checks if the character is still alive.
+        """
+        return self.health > 0
+
+
+    def __str__(self):
+        """
+        Returns a readable string of the character.
+        """
+        return f"{self.name} (Level {self.level}) - Health: {self.health}"
