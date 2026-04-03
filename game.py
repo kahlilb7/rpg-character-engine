@@ -10,6 +10,7 @@
 # ============================================================
 
 import random
+import csv
 
 def run_battle(fighter1, fighter2):
     """
@@ -400,4 +401,3 @@ class Rogue(Character, Serializable):
         damage = self.attack_power * 1.2
         target.defend(damage)
 
-        
