@@ -62,7 +62,7 @@ def run_battle(fighter1, fighter2):
 # ============================================================
 
 # ============================================================
-# Step 1: Character Class Structure
+# Step 1: Character Class Structure (Attributes & Constructor)
 # ============================================================
 
 class Character:
@@ -101,8 +101,8 @@ class Character:
         self.defense = defense
 
 
-  # ============================================================
-    # Step 2: Character Methods
+    # ============================================================
+    # Step 2: Character Methods (Combat & Status Behavior)
     # ============================================================
 
     def attack(self, target):
@@ -140,7 +140,7 @@ class Character:
 
 
     # ============================================================
-    # Step 3: Comparison Methods
+    # Step 3: Comparison Methods (Level-Based Ordering)
     # ============================================================
 
     def __lt__(self, other):
@@ -167,4 +167,46 @@ class Character:
             bool
         """
         return self.level > other.level
-    
+
+
+# ============================================================
+# Step 4: Serializable Mixin (File Save and Load System)
+# ============================================================
+
+class Serializable:
+    """
+    Mixin class that adds save and load functionality.
+    """
+
+    def save(self, filepath):
+        """
+        Saves the object's data to a file.
+
+        Parameters:
+            filepath (str)
+
+        Returns:
+            None
+        """
+        with open(filepath, "w") as file:
+            file.write(f"{self.name},{self.level},{self.health},{self.attack_power},{self.defense}")
+
+
+    def load(self, filepath):
+        """
+        Loads the object's data from a file.
+
+        Parameters:
+            filepath (str)
+
+        Returns:
+            None
+        """
+        with open(filepath, "r") as file:
+            data = file.read().strip().split(",")
+
+            self.name = data[0]
+            self.level = int(data[1])
+            self.health = float(data[2])
+            self.attack_power = float(data[3])
+            self.defense = float(data[4])
