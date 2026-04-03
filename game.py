@@ -439,3 +439,31 @@ def load_characters(filepath):
             characters.append(character)
 
     return characters
+
+
+# ============================================================
+# Step 8: main Function (Run and Display Game)
+# ============================================================
+
+def main():
+    """
+    Runs the program by loading characters, displaying them,
+    and running a battle.
+
+    Returns:
+        None
+    """
+    # load characters from the CSV file
+    characters = load_characters("characters.csv")
+
+    # print all characters
+    for character in characters:
+        print(character)
+
+    # run a battle between the first two characters
+    if len(characters) >= 2:
+        run_battle(characters[0], characters[1])
+
+
+if __name__ == "__main__":
+    main()
