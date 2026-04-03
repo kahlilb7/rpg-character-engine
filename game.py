@@ -117,12 +117,21 @@ class Character:
     def defend(self, damage):
         """
         Reduces health based on incoming damage and defense.
-        """
-        damage_taken = damage - self.defense
 
+        parameters:
+            damage (float): The raw damage being dealt to this character.
+
+        Returns:
+            None
+        """
+        # base character takes damage but is reduced by defense
+        damage_taken = damage - (self.defense / 2)
+
+        # ensure damage taken is not negative (healing)
         if damage_taken < 0:
             damage_taken = 0
 
+        # reduce health by the damage taken
         self.health -= damage_taken
 
 
@@ -316,13 +325,13 @@ class Warrior(Character, Serializable):
         Reduces incoming damage with stronger defense.
 
         Parameters:
-            damage (float)
+            damage (float): damage being dealt to this character.
 
         Returns:
             None
         """
         # warriors block more damage than the base Character
-        damage_taken = damage - (self.defense * 1.5)
+        damage_taken = damage - (self.defense)
 
         if damage_taken < 0:
             damage_taken = 0
