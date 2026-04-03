@@ -223,7 +223,7 @@ class Serializable:
 
 
 # ============================================================
-# Step 6: Subclass Overrides (Unique Combat Behavior)
+# Step 5: Subclass Overrides (Unique Combat Behavior)
 # ============================================================
 
 class Warrior(Character, Serializable):
@@ -338,7 +338,7 @@ class Rogue(Character, Serializable):
         target.defend(damage)
 
 # ============================================================
-# Step 7: load_characters Function (CSV to Character Objects)
+# Step 6: load_characters Function (CSV to Character Objects)
 # ============================================================
 
 def load_characters(filepath):
@@ -378,7 +378,7 @@ def load_characters(filepath):
 
 
 # ============================================================
-# Step 8: main Function (Run and Display Game)
+# Step 7: main Function (Run and Display Game)
 # ============================================================
 
 def main():
