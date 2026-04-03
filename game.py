@@ -137,3 +137,34 @@ class Character:
         Returns a readable string of the character.
         """
         return f"{self.name} (Level {self.level}) - Health: {self.health}"
+
+
+    # ============================================================
+    # Step 3: Comparison Methods
+    # ============================================================
+
+    def __lt__(self, other):
+        """
+        Compares if this character's level is less than another.
+
+        Parameters:
+            other (Character)
+
+        Returns:
+            bool
+        """
+        return self.level < other.level
+
+
+    def __gt__(self, other):
+        """
+        Compares if this character's level is greater than another.
+
+        Parameters:
+            other (Character)
+
+        Returns:
+            bool
+        """
+        return self.level > other.level
+    
