@@ -118,7 +118,7 @@ class Character:
         """
         Reduces health based on incoming damage and defense.
 
-        parameters:
+        Parameters:
             damage (float): The raw damage being dealt to this character.
 
         Returns:
@@ -220,79 +220,6 @@ class Serializable:
             self.health = float(data[2])
             self.attack_power = float(data[3])
             self.defense = float(data[4])
-
-
-# ============================================================
-# Step 5: Subclasses (Warrior, Mage, and Rogue Setup)
-# ============================================================
-
-class Warrior(Character, Serializable):
-    """
-    Represents a Warrior character.
-    """
-
-    def __init__(self, name, level, health, attack_power, defense):
-        """
-        Initializes a Warrior object.
-
-        Parameters:
-            name (str)
-            level (int)
-            health (float)
-            attack_power (float)
-            defense (float)
-
-        Returns:
-            None
-        """
-        # use the Character constructor to set the shared stats
-        super().__init__(name, level, health, attack_power, defense)
-
-
-class Mage(Character, Serializable):
-    """
-    Represents a Mage character.
-    """
-
-    def __init__(self, name, level, health, attack_power, defense):
-        """
-        Initializes a Mage object.
-
-        Parameters:
-            name (str)
-            level (int)
-            health (float)
-            attack_power (float)
-            defense (float)
-
-        Returns:
-            None
-        """
-        # use the Character constructor to set the shared stats
-        super().__init__(name, level, health, attack_power, defense)
-
-
-class Rogue(Character, Serializable):
-    """
-    Represents a Rogue character.
-    """
-
-    def __init__(self, name, level, health, attack_power, defense):
-        """
-        Initializes a Rogue object.
-
-        Parameters:
-            name (str)
-            level (int)
-            health (float)
-            attack_power (float)
-            defense (float)
-
-        Returns:
-            None
-        """
-
-        super().__init__(name, level, health, attack_power, defense)
 
 
 # ============================================================
