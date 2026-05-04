@@ -1,13 +1,17 @@
-# Kahlil Batieste
-# 03/29/2026
-# Project 2: RPG Character Engine
-# Builds a character system using classes, inheritance, and file loading
+"""
+RPG Character Engine
 
-# ============================================================
-# game.py — Project 2: RPG Character Engine
-# DO NOT modify the run_battle() function below.
-# Add all of your class definitions and functions beneath it.
-# ============================================================
+This program builds an object-oriented RPG system using classes and inheritance.
+Characters are loaded from a CSV file and can battle using a provided combat engine.
+
+Features:
+- Base Character class with shared attributes and behavior
+- Warrior, Mage, and Rogue subclasses with unique combat styles
+- Serializable mixin for saving and loading character data
+- File handling for loading character data from CSV
+
+Author: Kahlil Batieste
+"""
 
 import random
 import csv
