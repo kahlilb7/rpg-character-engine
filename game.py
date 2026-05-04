@@ -66,9 +66,7 @@ def run_battle(fighter1, fighter2):
 # Write your classes and functions below this line.
 # ============================================================
 
-# ============================================================
-# Step 1: Character Class Structure (Attributes & Constructor)
-# ============================================================
+# --- Character Base Class ---
 
 class Character:
     """
@@ -106,9 +104,7 @@ class Character:
         self.defense = defense
 
 
-    # ============================================================
-    # Step 2: Character Methods (Combat & Status Behavior)
-    # ============================================================
+    # --- Character Methods ---
 
     def attack(self, target):
         """
@@ -153,9 +149,7 @@ class Character:
         return f"{self.name} (Level {self.level}) - Health: {self.health}"
 
 
-    # ============================================================
-    # Step 3: Comparison Methods (Level-Based Ordering)
-    # ============================================================
+    # --- Comparison Methods ---
 
     def __lt__(self, other):
         """
@@ -183,9 +177,7 @@ class Character:
         return self.level > other.level
 
 
-# ============================================================
-# Step 4: Serializable Mixin (File Save and Load System)
-# ============================================================
+# --- Serializable Mixin ---
 
 class Serializable:
     """
@@ -226,9 +218,7 @@ class Serializable:
             self.defense = float(data[4])
 
 
-# ============================================================
-# Step 5: Subclass Overrides (Unique Combat Behavior)
-# ============================================================
+# --- Character Subclasses ---
 
 class Warrior(Character, Serializable):
     """
@@ -341,9 +331,7 @@ class Rogue(Character, Serializable):
         damage = self.attack_power * 1.2
         target.defend(damage)
 
-# ============================================================
-# Step 6: load_characters Function (CSV to Character Objects)
-# ============================================================
+# --- Data Loading ---
 
 def load_characters(filepath):
     """
@@ -381,9 +369,7 @@ def load_characters(filepath):
     return characters
 
 
-# ============================================================
-# Step 7: main Function (Run and Display Game)
-# ============================================================
+# --- Program Entry ---
 
 def main():
     """
